@@ -1,0 +1,64 @@
+html,body,#root,#gameRoot{margin:0;height:100%;background:#000;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif;color:#dfe8e2;user-select:none}
+.off{display:none!important}
+#game{position:fixed;inset:0}
+#game canvas{display:block;width:100%;height:100%}
+.screen{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:1rem;
+  background:radial-gradient(ellipse at 50% 15%,#1c2822 0%,#080b0a 75%)}
+.screen.dim{background:rgba(0,0,0,.78);backdrop-filter:blur(3px)}
+.panel{background:rgba(12,17,15,.92);border:1px solid rgba(150,200,175,.22);border-radius:.75rem;box-shadow:0 0 60px rgba(0,0,0,.75)}
+.title{font-weight:900;letter-spacing:.25em;color:#e8efe9;text-shadow:0 0 18px rgba(255,60,40,.55),0 0 3px #000;animation:flick 6s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.55}94%{opacity:1}96%{opacity:.7}97%{opacity:1}}
+.btn{display:block;width:100%;padding:.75rem 1rem;border-radius:.5rem;font-weight:700;letter-spacing:.05em;text-align:center;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(180,220,200,.28);color:#e4ece6;transition:.15s}
+.btn:hover{background:rgba(160,230,190,.16);border-color:rgba(160,230,190,.6)}
+.btn:active{transform:scale(.98)}
+.btn.main{background:#2f7d4f;border-color:#58c783;color:#fff}
+.btn.main:hover{background:#3a9a60}
+.btn.danger{background:rgba(180,50,40,.25);border-color:rgba(230,90,80,.5)}
+.btn.sm{padding:.4rem .7rem;font-size:.82rem;width:auto;display:inline-block}
+.btn[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none}
+.chip{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .7rem;border-radius:9999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:.9rem}
+.pip{display:inline-block;width:.6rem;height:.6rem;border-radius:2px;background:rgba(255,255,255,.15);margin-right:3px}
+.pip.on{background:#5ee59a}
+.bar{height:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.bar>i{display:block;height:100%;width:100%}
+#hud{position:fixed;inset:0;z-index:10;pointer-events:none;text-shadow:0 1px 3px #000}
+#vig{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.88) 100%)}
+#danger{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(150,0,0,.75) 100%)}
+#dmg{position:fixed;inset:0;z-index:7;pointer-events:none;opacity:0;background:rgba(190,0,0,.45);transition:opacity .35s}
+#cross{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:rgba(255,255,255,.75);box-shadow:0 0 0 1px rgba(0,0,0,.6)}
+#cross.hit{background:#ff4a3a;transform:scale(2.2)}
+.toast{padding:.3rem .8rem;border-radius:.4rem;background:rgba(0,0,0,.6);font-size:.92rem;animation:tin .25s ease}
+.toast.good{color:#8dffb8}.toast.bad{color:#ff8c80}.toast.info{color:#cfe6ff}
+@keyframes tin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stat{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.92rem}
+.up{padding:.6rem;border:1px solid rgba(255,255,255,.1);border-radius:.5rem;background:rgba(255,255,255,.03)}
+.noteitem{cursor:pointer;padding:.35rem .5rem;border-radius:.35rem;font-size:.85rem;border:1px solid rgba(255,255,255,.1);margin-bottom:.3rem}
+.noteitem:hover{background:rgba(255,255,255,.08)}
+kbd{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:.3rem;padding:0 .35rem;font-size:.8rem}
+
+/* ---------- Инвентарь ---------- */
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem}
+.slot{position:relative;aspect-ratio:1;border-radius:.5rem;border:1px solid rgba(180,220,200,.25);background:rgba(255,255,255,.05);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.12s;overflow:hidden}
+.slot:hover{background:rgba(160,230,190,.15);border-color:rgba(160,230,190,.6)}
+.slot.empty{cursor:default;background:rgba(255,255,255,.02);border-style:dashed;border-color:rgba(255,255,255,.1)}
+.slot.empty:hover{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1)}
+.slot.sel{border-color:#ffd24a;background:rgba(255,210,74,.14);box-shadow:0 0 0 1px #ffd24a inset}
+.slot .ic{font-size:1.9rem;line-height:1}
+.slot .n{position:absolute;right:5px;top:3px;font-size:.75rem;font-weight:800;color:#fff;background:rgba(0,0,0,.6);border-radius:.3rem;padding:0 .3rem}
+.slot .nm{font-size:.62rem;color:rgba(255,255,255,.65);margin-top:.2rem;text-align:center;line-height:1.1;padding:0 .15rem}
+.slot.key{border-color:#ffb020}
+.slot.locked{opacity:.6}
+.detail{min-height:6.2rem;border:1px solid rgba(255,255,255,.12);border-radius:.5rem;background:rgba(255,255,255,.04);padding:.7rem}
+.zonedot{display:inline-block;width:.6rem;height:.6rem;border-radius:2px;margin-right:.4rem}
+
+/* ---------- Убежище (3D-комната) ---------- */
+#hcross{position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:rgba(255,236,200,.8);box-shadow:0 0 0 1px rgba(0,0,0,.5)}
+.hprompt{display:flex;align-items:center;gap:.6rem;padding:.5rem .9rem;border-radius:.6rem;background:rgba(10,14,12,.78);border:1px solid rgba(255,200,110,.45);font-size:.95rem;font-weight:600;color:#ffe2b0;box-shadow:0 0 24px rgba(255,170,60,.18);backdrop-filter:blur(2px);animation:tin .2s ease}
+.hprompt kbd{background:#ffc24a;color:#1a1208;border-color:#ffc24a;font-weight:800;padding:.05rem .45rem}
+.hprompt.go{border-color:rgba(100,255,150,.55);color:#b8ffd0;box-shadow:0 0 24px rgba(80,255,140,.2)}
+.hprompt.go kbd{background:#4aff8a;border-color:#4aff8a}
+#hfade{position:fixed;inset:0;z-index:70;background:#000;opacity:0;pointer-events:none;transition:opacity .8s ease}
+.screen.hubpause{align-items:flex-end;padding-bottom:3rem;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 100%)}
+.rest-text{min-height:5.5rem;border:1px solid rgba(255,255,255,.12);border-radius:.5rem;background:rgba(255,255,255,.04);padding:.8rem;font-style:italic;color:rgba(255,235,205,.9);line-height:1.55}
